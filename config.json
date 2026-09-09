@@ -1,0 +1,55 @@
+{
+  "engine": {
+    "name": "Chronos-EDR",
+    "description": "Anti-Ransomware & Kernel-Level Honey-Files Engine",
+    "version": "1.0.0"
+  },
+  "entropy": {
+    "threshold": 7.2,
+    "chunk_size_bytes": 65536,
+    "sample_read_bytes": 262144
+  },
+  "canary": {
+    "prefix": "!00_",
+    "registry_file": ".chronos_canary_registry.json",
+    "target_directories": [
+      "C:\\Users\\Public\\Documents",
+      "C:\\Users\\Public\\Downloads",
+      "decoys"
+    ],
+    "templates": [
+      {
+        "filename": "!00_VakifBank_2026_Maas_Listesi.xlsx",
+        "category": "finance",
+        "type": "spreadsheet"
+      },
+      {
+        "filename": "!00_Sirket_Finansal_Bilanco_2026.docx",
+        "category": "finance",
+        "type": "document"
+      },
+      {
+        "filename": "!00_Kripto_Cuzdan_Kurtarma_Anahtarlari.txt",
+        "category": "credentials",
+        "type": "text"
+      },
+      {
+        "filename": "!00_MySQL_Root_Parolalari.pdf",
+        "category": "credentials",
+        "type": "document"
+      }
+    ]
+  },
+  "logging": {
+    "file": "chronos_edr.log",
+    "level": "INFO",
+    "format": "[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s",
+    "max_bytes": 10485760,
+    "backup_count": 5,
+    "console_output": true
+  },
+  "response": {
+    "kill_process_on_alert": true,
+    "quarantine_directory": "quarantine"
+  }
+}
